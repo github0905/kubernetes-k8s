@@ -1,0 +1,18 @@
+kind: ReplicationController               
+apiVersion: v1
+metadata:
+  name: myreplica
+spec:
+  replicas: 2            
+  selector:        
+    envt: test                             
+  template:                
+    metadata:
+      labels:            
+        envt: test
+    spec:
+     containers:
+       - name: mynginx
+         image: nginx
+         ports:
+           - containerPort: 80
